@@ -1,7 +1,15 @@
+/**
+ * Реализация связанного списка.
+ *
+ * @param <T> Тип элементов в списке
+ */
 public class MyLinkedList<T> {
     private Node<T> head;
     private int size;
 
+    /**
+     * Внутренний класс, представляющий узел списка.
+     */
     private static class Node<T> {
         T data;
         Node<T> next;
@@ -12,11 +20,19 @@ public class MyLinkedList<T> {
         }
     }
 
+    /**
+     * Создает новый экземпляр MyLinkedList.
+     */
     public MyLinkedList() {
         head = null;
         size = 0;
     }
 
+    /**
+     * Добавляет элемент в конец списка.
+     *
+     * @param element Элемент для добавления
+     */
     public void add(T element) {
         Node<T> newNode = new Node<>(element);
         if (head == null) {
@@ -31,6 +47,13 @@ public class MyLinkedList<T> {
         size++;
     }
 
+    /**
+     * Добавляет элемент по указанному индексу.
+     *
+     * @param index   Индекс, куда добавить элемент
+     * @param element Элемент для добавления
+     * @throws IndexOutOfBoundsException Если индекс недопустим
+     */
     public void add(int index, T element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Недопустимый индекс");
@@ -50,6 +73,13 @@ public class MyLinkedList<T> {
         size++;
     }
 
+    /**
+     * Возвращает элемент по указанному индексу.
+     *
+     * @param index Индекс элемента
+     * @return Элемент по индексу
+     * @throws IndexOutOfBoundsException Если индекс недопустим
+     */
     public T get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Недопустимый индекс");
@@ -61,6 +91,12 @@ public class MyLinkedList<T> {
         return current.data;
     }
 
+    /**
+     * Удаляет элемент по указанному индексу.
+     *
+     * @param index Индекс элемента для удаления
+     * @throws IndexOutOfBoundsException Если индекс недопустим
+     */
     public void remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Недопустимый индекс");
@@ -77,6 +113,9 @@ public class MyLinkedList<T> {
         size--;
     }
 
+    /**
+     * Очищает список (делает его пустым).
+     */
     public void clear() {
         head = null;
         size = 0;

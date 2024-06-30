@@ -1,3 +1,7 @@
+/**
+ * Класс Main содержит метод main, который демонстрирует использование
+ * двух пользовательских коллекций: MyArrayList и MyLinkedList.
+ */
 public class Main {
     public static void main(String[] args) {
         // Пример использования MyArrayList
