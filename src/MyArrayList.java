@@ -85,9 +85,63 @@ public class MyArrayList<T> {
      * Очищает список (делает его пустым).
      */
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            array[i] = null;
-        }
+        array = new Object[DEFAULT_CAPACITY];
         size = 0;
+
+    }
+
+    /**
+     * Возвращает строковое представление списка.
+     *
+     * @return Строковое представление списка
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < size; i++) {
+            sb.append(array[i]);
+            if (i < size - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+    public void sort() {
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = 0; j < size - i - 1; j++) {
+                T current = (T) array[j];
+                T next = (T) array[j + 1];
+                if (compare(current, next) > 0) {
+                    // Обмен элементов, если текущий больше следующего
+                    array[j] = next;
+                    array[j + 1] = current;
+                }
+            }
+        }
+    }
+
+    /**
+     * Сравнивает два элемента для определения порядка сортировки.
+     * Возвращает отрицательное число, если a < b, положительное число, если a > b,
+     * и 0, если a равно b.
+     *
+     * @param a Первый элемент
+     * @param b Второй элемент
+     * @return Результат сравнения
+     */
+    private int compare(T a, T b) {
+        return (a.hashCode() - b.hashCode());
+    }
+
+    /**
+     * Возвращает текущий размер (количество элементов) списка.
+     *
+     * @return Размер списка
+     */
+    public int size() {
+        return size;
     }
 }
