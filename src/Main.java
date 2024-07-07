@@ -19,5 +19,14 @@ public class Main {
         System.out.println(myLinkedList.get(0)); // Выведет "Hello"
         myLinkedList.remove(1); // Удалим второй элемент
         System.out.println(myLinkedList.get(0)); // Выведет "Hello"
+
+        // Пример сортировки
+        MyArrayList<Integer> myList = new MyArrayList<>();
+        myList.add(23);
+        myList.add(100);
+        myList.add(2);
+        System.out.println("Before sorting: " + myList);
+        myList.sort();
+        System.out.println("After sorting: " + myList);
     }
 }
