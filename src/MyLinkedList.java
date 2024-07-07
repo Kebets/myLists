@@ -5,6 +5,7 @@
  */
 public class MyLinkedList<T> {
     private Node<T> head;
+    private Node<T> prev; // Добавляем ссылку на предыдущий узел
     private int size;
 
     /**
@@ -13,10 +14,11 @@ public class MyLinkedList<T> {
     private static class Node<T> {
         T data;
         Node<T> next;
-
+        Node<T> prev;
         Node(T data) {
             this.data = data;
             this.next = null;
+            this.prev = null;
         }
     }
 
@@ -25,6 +27,7 @@ public class MyLinkedList<T> {
      */
     public MyLinkedList() {
         head = null;
+        prev = null;
         size = 0;
     }
 
@@ -43,6 +46,7 @@ public class MyLinkedList<T> {
                 current = current.next;
             }
             current.next = newNode;
+            newNode.prev = current; // Обновляем ссылку на предыдущий узел
         }
         size++;
     }
@@ -118,6 +122,28 @@ public class MyLinkedList<T> {
      */
     public void clear() {
         head = null;
+        prev = null;
         size = 0;
+    }
+
+    /**
+     * Возвращает строковое представление списка.
+     *
+     * @return Строковое представление списка
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        Node<T> current = head;
+        while (current != null) {
+            sb.append(current.data);
+            if (current.next != null) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append("]");
+        return sb.toString();
     }
 }
